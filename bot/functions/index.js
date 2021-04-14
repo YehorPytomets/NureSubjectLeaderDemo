@@ -1,9 +1,9 @@
 const functions = require('firebase-functions')
 const Telegraf = require('telegraf')
 
-const bot = new Telegraf(functions.config().telegram.token, {
+const bot = new Telegraf.Telegraf(functions.config().telegram.token, {
     telegram: { webhookReply: true },
-})
+});
 
 // error handling
 bot.catch((err, ctx) => {
