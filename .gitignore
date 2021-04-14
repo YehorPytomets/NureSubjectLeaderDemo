@@ -1,0 +1,80 @@
+### IntelliJ IDEA:
+
+# User-specific stuff
+.idea/**/workspace.xml
+.idea/**/dictionaries
+
+# Sensitive or high-churn files
+.idea/**/uiDesigner.xml
+
+# Gradle
+.idea/**/gradle.xml
+
+# Do not ignore code style settings.
+!/.idea/codeStyles/codeStyleConfig.xml
+
+# IntelliJ IDEA modules and interim config files.
+*.iml
+.idea/*.xml
+.idea/.name
+.idea/artifacts
+.idea/libraries
+.idea/modules
+.idea/shelf
+
+# Do not ignore the following IDEA settings
+!.idea/misc.xml
+!.idea/codeStyleSettings.xml
+!.idea/codeStyles/
+!.idea/copyright/
+
+# Gradle interim configs
+**/.gradle/**
+
+# Generated source code
+**/generated/**
+
+# Gradle build files
+**/build/**
+
+# Build files produced by the IDE
+**/out/**
+
+# Ignore Gradle GUI config
+gradle-app.setting
+
+# Avoid ignoring Gradle wrapper jar file (.jar files are usually ignored)
+!gradle-wrapper.jar
+
+# Cache of project
+.gradletasknamecache
+
+# Spine internal directory for storing intermediate artifacts
+**/.spine/**
+
+# Spine model compiler auto-generated resources
+/tools/gradle-plugins/model-compiler/src/main/resources/spine-protoc.gradle
+
+# Log files
+*.log
+
+# Package Files #
+*.war
+*.ear
+*.zip
+*.tar.gz
+*.rar
+
+#
+# The gradle.properties file should contain settings specific to a developer's workstation.
+#
+# See sample file for a Mac OS X workstation below.
+# -------
+# # Set Java home to point to JDK8. This is need to generate classes working with Java8 API.
+# # Otherwise the following warning appears during the build:
+# #     warning: [options] bootstrap class path not set in conjunction with -source 1.8
+# #
+# # suppress inspection "UnusedProperty"
+# org.gradle.java.home=/Library/Java/JavaVirtualMachines/jdk1.8.0_51.jdk/Contents/Home/
+# -------
+gradle.properties
