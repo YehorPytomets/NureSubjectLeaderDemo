@@ -1,17 +1,24 @@
-require('dotenv').config()
+const { Telegraf, session } = require('telegraf')
+const { Stage } = require('telegraf/scenes/stage')
+const { Scene } = require('telegraf/scenes/base')
+const { leave } = Stage
 
-const { Telegraf } = require('telegraf')
+// Greeter scene
+const greeter = new Scene('greeter')
+greeter.enter((ctx) => ctx.reply('Hi'))
+greeter.leave((ctx) => ctx.reply('Bye'))
+greeter.hears(/hi/gi, leave())
+greeter.on('message', (ctx) => ctx.reply('Send `hi`'))
 
-const bot = new Telegraf(process.env.BOT_TOKEN);
+// Create scene manager
+const stage = new Stage()
+stage.command('cancel', leave())
 
-bot.use(async (ctx, next) => {
-    const start = new Date();
-    await next();
-    const response_time = new Date() - start;
-    const chat_from = `${ctx.message.chat.first_name} (id: ${ctx.message.chat.id})`;
-    console.log(`Chat from ${chat_from} (Response Time: ${response_time})`);
-})
+// Scene registration
+stage.register(greeter)
 
-bot.command('cmd', (ctx) => ctx.reply('Command printed'));
-bot.hears('Assalamualaikum', (ctx) => ctx.reply('Waalaikumsalam'));
-bot.launch();
+const bot = new Telegraf(process.env.BOT_TOKEN)
+bot.use(session())
+bot.use(stage.middleware())
+bot.command('greeter', (ctx) => ctx.scene.enter('greeter'))
+bot.startPolling()
